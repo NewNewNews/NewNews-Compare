@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message KeyValue {
+  string key = 1;
+  repeated string values = 2;
+}
+
+message Comparison {
+  repeated KeyValue entries = 1;
+}
+
+message GetComparisonRequest {
+  string news_id = 1;
+}
+
+service ComparisonService {
+  rpc GetComparison(GetComparisonRequest) returns (Comparison);
+}
+
+message Response {
+  string message = 1;
+}

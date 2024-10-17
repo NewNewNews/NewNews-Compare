@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - my-custom-network
+volumes:
+  mongodb_data:
+  volume1:
+  grafana-storage:
+
+networks:
+  my-custom-network:
+    external: true
+  kafka-net:
+    driver: bridge
