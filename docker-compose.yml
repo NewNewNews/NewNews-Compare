@@ -1,20 +1,35 @@
-version: "3.8"
 services:
-  mongodb:
-    image: mongo:latest
+  mongo_compare_service:
+    image: mongo:6.0
     ports:
-      - "27018:27017"
+      - "27019:27017"
     volumes:
-      - mongodb_data:/data/db
+      - mongo_compare_service_data:/data/db
     networks:
-      - my-custom-network
+      - app_network
+
+  compare_service:
+    container_name: compare_service
+    hostname: compare_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "50053:50053"
+    environment:
+      - MONGODB_URI=mongodb://mongo_compare_service:27017/
+      - MONGODB_DB=comparison_db
+      - MONGODB_COLLECTION=comparisons
+      - KAFKA_BROKER=broker:29092
+      - PORT=50053
+    depends_on:
+      - mongo_compare_service
+    networks:
+      - app_network
+
 volumes:
-  mongodb_data:
-  volume1:
-  grafana-storage:
+  mongo_compare_service_data:
 
 networks:
-  my-custom-network:
+  app_network:
     external: true
-  kafka-net:
-    driver: bridge

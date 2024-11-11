@@ -3,9 +3,9 @@
 import grpc
 import warnings
 
-from protos import compare_pb2 as protos_dot_compare__pb2
+import protos.compare_pb2 as compare__pb2
 
-GRPC_GENERATED_VERSION = '1.66.1'
+GRPC_GENERATED_VERSION = '1.67.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in protos/compare_pb2_grpc.py depends on'
+        + f' but the generated code in compare_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class ComparisonServiceStub(object):
         """
         self.GetComparison = channel.unary_unary(
                 '/ComparisonService/GetComparison',
-                request_serializer=protos_dot_compare__pb2.GetComparisonRequest.SerializeToString,
-                response_deserializer=protos_dot_compare__pb2.Comparison.FromString,
+                request_serializer=compare__pb2.GetComparisonRequest.SerializeToString,
+                response_deserializer=compare__pb2.Comparison.FromString,
                 _registered_method=True)
 
 
@@ -55,8 +55,8 @@ def add_ComparisonServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetComparison': grpc.unary_unary_rpc_method_handler(
                     servicer.GetComparison,
-                    request_deserializer=protos_dot_compare__pb2.GetComparisonRequest.FromString,
-                    response_serializer=protos_dot_compare__pb2.Comparison.SerializeToString,
+                    request_deserializer=compare__pb2.GetComparisonRequest.FromString,
+                    response_serializer=compare__pb2.Comparison.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -84,8 +84,8 @@ class ComparisonService(object):
             request,
             target,
             '/ComparisonService/GetComparison',
-            protos_dot_compare__pb2.GetComparisonRequest.SerializeToString,
-            protos_dot_compare__pb2.Comparison.FromString,
+            compare__pb2.GetComparisonRequest.SerializeToString,
+            compare__pb2.Comparison.FromString,
             options,
             channel_credentials,
             insecure,
