@@ -15,13 +15,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "50053:50053"
+      - "50054:50054"
     environment:
       - MONGODB_URI=mongodb://mongo_compare_service:27017/
       - MONGODB_DB=comparison_db
       - MONGODB_COLLECTION=comparisons
       - KAFKA_BROKER=broker:29092
-      - PORT=50053
+      - PORT=50054
     depends_on:
       - mongo_compare_service
     networks:

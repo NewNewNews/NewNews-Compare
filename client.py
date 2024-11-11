@@ -4,7 +4,7 @@ from protos import compare_pb2_grpc
 
 
 def run():
-    with grpc.insecure_channel("localhost:50053") as channel:
+    with grpc.insecure_channel("localhost:50054") as channel:
         stub = compare_pb2_grpc.ComparisonServiceStub(channel)
 
         while True:

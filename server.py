@@ -56,7 +56,7 @@ def serve():
     compare_pb2_grpc.add_ComparisonServiceServicer_to_server(
         ComparisonService(), server
     )
-    port = os.getenv("PORT", "50053")
+    port = os.getenv("PORT", "50054")
     server.add_insecure_port(f"[::]:{port}")
     print(f"Server starting on port {port}...")
     server.start()
