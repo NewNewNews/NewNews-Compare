@@ -25,5 +25,9 @@ EXPOSE 50053
 # Run supervisord to manage multiple processes
 # CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*
+
 # CMD ["python", "-u", "consumer.py"]
-CMD ["python", "-u", "server.py"]
+# CMD ["python", "-u", "server.py"]
