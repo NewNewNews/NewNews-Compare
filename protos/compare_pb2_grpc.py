@@ -35,7 +35,7 @@ class ComparisonServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetComparison = channel.unary_unary(
-                '/ComparisonService/GetComparison',
+                '/comparisonservice.ComparisonService/GetComparison',
                 request_serializer=compare__pb2.GetComparisonRequest.SerializeToString,
                 response_deserializer=compare__pb2.Comparison.FromString,
                 _registered_method=True)
@@ -60,9 +60,9 @@ def add_ComparisonServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ComparisonService', rpc_method_handlers)
+            'comparisonservice.ComparisonService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('ComparisonService', rpc_method_handlers)
+    server.add_registered_method_handlers('comparisonservice.ComparisonService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -83,7 +83,7 @@ class ComparisonService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/ComparisonService/GetComparison',
+            '/comparisonservice.ComparisonService/GetComparison',
             compare__pb2.GetComparisonRequest.SerializeToString,
             compare__pb2.Comparison.FromString,
             options,

@@ -24,21 +24,22 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcompare.proto\"\'\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"(\n\nComparison\x12\x1a\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\t.KeyValue\"6\n\x14GetComparisonRequest\x12\x10\n\x08\x65vent_id\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t2H\n\x11\x43omparisonService\x12\x33\n\rGetComparison\x12\x15.GetComparisonRequest\x1a\x0b.Comparisonb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcompare.proto\x12\x11\x63omparisonservice\"\'\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\":\n\nComparison\x12,\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\x1b.comparisonservice.KeyValue\"6\n\x14GetComparisonRequest\x12\x10\n\x08\x65vent_id\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61te\x18\x02 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t2l\n\x11\x43omparisonService\x12W\n\rGetComparison\x12\'.comparisonservice.GetComparisonRequest\x1a\x1d.comparisonservice.ComparisonB0Z.github.com/yourusername/gateway/internal/protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'compare_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_KEYVALUE']._serialized_start=17
-  _globals['_KEYVALUE']._serialized_end=56
-  _globals['_COMPARISON']._serialized_start=58
-  _globals['_COMPARISON']._serialized_end=98
-  _globals['_GETCOMPARISONREQUEST']._serialized_start=100
-  _globals['_GETCOMPARISONREQUEST']._serialized_end=154
-  _globals['_RESPONSE']._serialized_start=156
-  _globals['_RESPONSE']._serialized_end=183
-  _globals['_COMPARISONSERVICE']._serialized_start=185
-  _globals['_COMPARISONSERVICE']._serialized_end=257
+  _globals['DESCRIPTOR']._loaded_options = None
+  _globals['DESCRIPTOR']._serialized_options = b'Z.github.com/yourusername/gateway/internal/proto'
+  _globals['_KEYVALUE']._serialized_start=36
+  _globals['_KEYVALUE']._serialized_end=75
+  _globals['_COMPARISON']._serialized_start=77
+  _globals['_COMPARISON']._serialized_end=135
+  _globals['_GETCOMPARISONREQUEST']._serialized_start=137
+  _globals['_GETCOMPARISONREQUEST']._serialized_end=191
+  _globals['_RESPONSE']._serialized_start=193
+  _globals['_RESPONSE']._serialized_end=220
+  _globals['_COMPARISONSERVICE']._serialized_start=222
+  _globals['_COMPARISONSERVICE']._serialized_end=330
 # @@protoc_insertion_point(module_scope)
