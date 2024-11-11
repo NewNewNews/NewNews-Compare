@@ -1,23 +1,14 @@
-PROTO_DIR := protos
-GOOGLE_APIS_DIR := $(PROTO_DIR)/google/api
+build:
+	docker compose up -d --build
 
-.PHONY: all clean proto
+start:
+	docker compose up -d
 
-all: proto
+stop:
+	sudo docker compose down
 
-clean:
-	rm -rf $(GOOGLE_APIS_DIR)
-	rm -f $(PROTO_DIR)/*.pb.go
+protos:
+	python -m grpc_tools.protoc -I./protos --python_out=./protos/ --grpc_python_out=./protos/ ./protos/compare.proto
 
-$(GOOGLE_APIS_DIR):
-	mkdir -p $(GOOGLE_APIS_DIR)
-	curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto -o $(GOOGLE_APIS_DIR)/annotations.proto
-	curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto -o $(GOOGLE_APIS_DIR)/http.proto
-
-proto: $(GOOGLE_APIS_DIR)
-
-	python -m grpc_tools.protoc -I . \
-		-I$(PROTO_DIR) \
-		--python_out=. \
-		--grpc_python_out=. \
-		$(PROTO_DIR)/compare.proto
+client:
+	python client.py
