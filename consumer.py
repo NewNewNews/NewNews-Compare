@@ -119,7 +119,7 @@ def main():
         if news_message is not None:
             print(f"Consumed record with key: {key}")
         
-        event_id = key.split("_")[1]
+        event_id = key.split("_")[0]
         
         if int(event_id) == -1:
             continue   
@@ -129,7 +129,7 @@ def main():
         
         if event_id != event.id:
             comparison = event.create_comparison()
-            db.save_comparison(event_id, news_message.date, comparison)
+            db.save_comparison(event.id, news_message.date, comparison)
             event = NewsEvent(event_id, news_message.date)
             
         event.add_content(news_message.publisher, news_message.data)
